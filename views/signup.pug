@@ -1,0 +1,29 @@
+include layout/header.pug
+if msg
+    .alert.alert-dismissible.fade.show.alert-success
+        strong #{msg}
+        button.close(type='button' data-dismiss='alert')
+            span(aria-hidden='true') &times;
+
+.container
+    .row 
+        .offset-3.mx-auto.col-md-6.m-5
+            .con.border.border-primary 
+                .bg-primary.p-2.text-center.text-white.font-weight-bold Sign Up
+                .form-container.p-4
+                    form(method="post" action="../api/users")
+                        .form-group
+                            label Name
+                            input#name.form-control(type='text' placeholder='Enter Name' name="name" required="true" minlength="3")       
+                        .form-group
+                            label(for='exampleInputEmail1') Email address
+                            input#email.form-control(type='email' placeholder='Enter email' name="email" required="true")
+                            small#email.form-text.text-muted We&apos;ll never share your email with anyone else.
+                        .form-group
+                            label(for='exampleInputPassword1') Password
+                            input#password.form-control(type='password' placeholder='Password' name="password" required="true" minlength="8" maxlength="16")
+                        button.btn.btn-primary(type='submit') SignUp
+                        button.btn.btn-danger.ml-4(type='reset') Reset
+                        a.ml-4(href="../signin") Already Registered?Sign In
+include layout/footer.pug                        
+

@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 const config = require("config");
+const winston = require("winston");
 
 module.exports = ()=>{
     const db = config.get("db");
     mongoose.connect(db)
-    .then(()=>console.log(`Connected To ${db}`))
+    .then(()=>winston.info(`Connected To ${db}`))
     .catch((err)=>console.log(err));
 }

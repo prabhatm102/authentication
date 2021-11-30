@@ -1,0 +1,8 @@
+include layout/header.pug 
+if msg
+    .alert.alert-dismissible.fade.show.alert-success
+        strong #{msg}
+        button.close(type='button' data-dismiss='alert')
+            span(aria-hidden='true') &times;
+
+include layout/footer.pug 
