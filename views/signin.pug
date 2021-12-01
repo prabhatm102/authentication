@@ -12,7 +12,7 @@ if msg
             .con.border.border-primary 
                 .bg-primary.p-2.text-center.text-white.font-weight-bold Sign In
                 .form-container.p-4
-                    form(method="post" action="../api/logins")
+                    form(method="post" action="../../api/logins")
                         .form-group
                             label(for='exampleInputEmail1') Email address
                             input#email.form-control(type='email' placeholder='Enter email' name="email" required="true")
@@ -23,5 +23,5 @@ if msg
                         button.btn.btn-primary(type='submit') SignIn
                         button.btn.btn-danger.ml-4(type='reset') Reset
                         a.ml-4(href="../forgetpassword") Forget Password?
-                        a.ml-4(href="../signup") Not Registered Yet?
+                        a.ml-4(href="../signup") New User?Register
 include layout/footer.pug                        

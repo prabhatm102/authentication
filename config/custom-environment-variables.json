@@ -1,4 +1,5 @@
 {
     "jwtPrivateKey":"auth_jwtPrivateKey",
-    "db":"auth_db"
+    "db":"auth_db",
+    "pass":"auth_pass"
 }

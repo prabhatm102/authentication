@@ -27,7 +27,9 @@ const userSchema  = new mongoose.Schema({
 
 userSchema.methods.genrateToken = function(){
     const userInfo = {
-        name:this.name
+        _id:this._id,
+        name:this.name,
+        email:this.email
     }
     return jwt.sign(userInfo,config.get("jwtPrivateKey"));
 }

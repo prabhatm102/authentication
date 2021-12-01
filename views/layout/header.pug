@@ -15,16 +15,18 @@ body
                         li.nav-item.active
                             a.nav-link(href='../')
                                 | Home 
-                                span.sr-only (current)                                                             
-                        li.nav-item
-                            a.nav-link(href='../signup') Sign Up
-                        li.nav-item
-                            a.nav-link(href='../signin') Sign In    
-                        li.nav-item.dropdown
-                            a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown')
-                                | Dropdown
-                            .dropdown-menu(style="background-color: #48C9B0;")
-                                a.dropdown-item(href='#') Action
-                                a.dropdown-item(href='#') Another action
-                                .dropdown-divider
-                                a.dropdown-item(href='#') Something else here
+                                span.sr-only (current)    
+                        if !id                                                                     
+                            li.nav-item
+                               a.nav-link(href='../signup') Sign Up
+                            li.nav-item
+                               a.nav-link(href='../signin') Sign In    
+                        if id        
+                            li.nav-item.dropdown
+                               a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown')
+                                | Your Account
+                               .dropdown-menu(style="background-color: #48C9B0;")
+                                a.dropdown-item(href='../signup') Edit Profile
+                                form(method="post" action="../api/users/"+id)
+                                    button.btn.btn-primary.dropdown-item.bg-danger(type='submit') Logout
+                                    

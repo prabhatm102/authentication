@@ -1,4 +1,10 @@
 include layout/header.pug
-.container.d-inline-block.w-100.h-50.m-5.p-5.text-danger.font-weight-bold
-    .home.text-bold.text-center Sign In/SignUp To Go To Dashboard
+if msg
+    .alert.alert-dismissible.fade.show.alert-success
+        strong #{msg}
+        button.close(type='button' data-dismiss='alert')
+            span(aria-hidden='true') &times;
+
+.container.d-inline-block.w-100.h-50.text-danger.font-weight-bold(style="font-size:48px;margin-auto")
+    marquee.text-bold.text-center( behavior="alternate" direction="right") Sign In To Go To Dashboard
 include layout/footer.pug                        
