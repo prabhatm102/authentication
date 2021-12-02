@@ -6,6 +6,7 @@ const { isVerify } = require("../middleware/isVerify");
 const express = require("express"); 
 const cookieParser = require("cookie-parser");
 const pug = require("pug");
+const favicon = require("serve-favicon");
 
 const users = require("../routes/user");
 const login = require("../routes/auth");
@@ -14,7 +15,7 @@ const sendmail = require("../routes/sendmail");
 
 
 module.exports = function(app){
-  
+    app.use(favicon("views/images/favicon.ico"));
     app.use(express.json());
     app.use(express.urlencoded({extended:true}));
     app.use(cookieParser());

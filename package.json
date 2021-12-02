@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node index.js"
+    "start": "node index.js"
   },
-  "engine":{
-    "node":"17.1.0"
+  "engine": {
+    "node": "17.1.0"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +28,7 @@
     "mongoose": "^6.0.13",
     "nodemailer": "^6.7.2",
     "pug": "^3.0.2",
+    "serve-favicon": "^2.5.0",
     "winston": "^3.3.3"
   }
 }
