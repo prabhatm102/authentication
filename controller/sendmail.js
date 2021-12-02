@@ -35,7 +35,7 @@ const sendmail = async(req,res,next)=>{
            if(error) 
               res.status(500).render("forgetpassword.pug",{msg:"Something Went wrong!Try again",isSent:"false"});
            else
-              res.status(200).render("forgetpassword.pug",{isSent:"true",host:req.hostname});
+              res.status(200).render("forgetpassword.pug",{isSent:"true"});
         });          
     }
 
