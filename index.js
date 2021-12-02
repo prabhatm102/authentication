@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000
 app.set("view-engine","pug");
 app.set("views",__dirname+"/views");
 
-require("./start/prod")(app);
+//require("./start/prod")(app);
 require("./start/logging")();
 require("./start/config")();
 require("./start/db")();

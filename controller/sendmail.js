@@ -30,11 +30,12 @@ const sendmail = async(req,res,next)=>{
           subject:"Verify your email",
           html:"<h2>Click on the below link to reset password</h2><br><a href="+link+">Forget Password</a>"
       } 
+    
      transporter.sendMail(mailOptions,function(error,info){
            if(error) 
               res.status(500).render("forgetpassword.pug",{msg:"Something Went wrong!Try again",isSent:"false"});
            else
-              res.status(200).render("forgetpassword.pug",{isSent:"true"});
+              res.status(200).render("forgetpassword.pug",{isSent:"true",host:req.hostname});
         });          
     }
 
