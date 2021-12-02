@@ -1,5 +1,7 @@
 const error = require("../middleware/error");
 const auth = require("../middleware/auth");
+const { isLogin } = require("../middleware/isLogin");
+const { isVerify } = require("../middleware/isVerify");
 
 const express = require("express"); 
 const cookieParser = require("cookie-parser");
@@ -9,8 +11,7 @@ const users = require("../routes/user");
 const login = require("../routes/auth");
 const sendmail = require("../routes/sendmail");
 
-const { isLogin } = require("../middleware/isLogin");
-const { isVerify } = require("../middleware/isVerify");
+
 
 module.exports = function(app){
   
@@ -22,7 +23,8 @@ module.exports = function(app){
     app.use("/api/logins",login);
     app.use("/api/sendmail",sendmail);
 
-    //Templates
+  //Templates
+  // Before Login  
     app.get("/",isLogin,(req,res,next)=>{ 
        res.render("guest.pug");
     });
@@ -38,10 +40,16 @@ module.exports = function(app){
     app.get("/changePassword",isLogin,isVerify,(req,res)=>{
       res.render("changepassword.pug");
     });
+
+  // After Login  
     app.get("/dashboard",auth,(req,res)=>{
        res.render("dashboard.pug",{msg:"Welcome "+req.user.name,id:req.user._id});
     });
-
+    app.get("/editprofile",auth,(req,res)=>{
+       res.render("editprofile.pug",{id:req.user._id,name:req.user.name});
+    });
+  
+  // Invalid request
     app.get('*',isLogin,(req,res)=>{
        res.render('guest.pug',{msg:"404 page not found!"})
     });

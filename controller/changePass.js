@@ -17,7 +17,8 @@ const changePass = async(req,res,next)=>{
        await user.save();
 
        res.cookie("verify=;path='/';expires="+new Date("01/01/1900"));
-       res.render("signin.pug",{msg:"Password updated!Sign in to continue"});  
+       res.render("signin.pug",{msg:"Password updated!Sign in to continue"}); 
+        
     }catch(ex){
         res.cookie("authToken=;"+"path='/';expires="+new Date("01/01/1900"));
         return res.status(401).render("guest.pug",{msg:"Unauthorised"});

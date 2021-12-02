@@ -1,6 +1,5 @@
 const { User } = require("../model/user");
 const bcrypt = require("bcrypt");
-const _ = require("lodash");
 const getUserById = async(req,res,next)=>{
     const user = await User.findOne({name:req.user.name}).select("name email -_id");
     res.status(200).send(user);

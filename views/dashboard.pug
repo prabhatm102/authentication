@@ -4,4 +4,13 @@ if msg
         strong #{msg}
         button.close(type='button' data-dismiss='alert')
             span(aria-hidden='true') &times;
+
+.container
+    .row 
+        .col-md-12 
+            marquee(behavior="alternate")
+                h1 &lArr;Dashboard&rArr;
+
 include layout/footer.pug
+script 
+    include js/isSure.js

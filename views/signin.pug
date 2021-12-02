@@ -1,11 +1,9 @@
 include layout/header.pug
-
 if msg
     .alert.alert-dismissible.fade.show.alert-success
         strong #{msg}
         button.close(type='button' data-dismiss='alert')
             span(aria-hidden='true') &times;
-
 .container
     .row 
         .offset-3.mx-auto.col-md-6.m-5
@@ -22,6 +20,6 @@ if msg
                             input#password.form-control(type='password' placeholder='Password' name="password" required="true" minlength="8" maxlength="16")
                         button.btn.btn-primary(type='submit') SignIn
                         button.btn.btn-danger.ml-4(type='reset') Reset
-                        a.ml-4(href="../forgetpassword") Forget Password?
-                        a.ml-4(href="../signup") New User?Register
+                        a.ml-4(href="../../forgetpassword") Forget Password?
+                        a.ml-4(href="../../signup") New User?Register
 include layout/footer.pug                        

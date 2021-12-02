@@ -1,0 +1,22 @@
+include layout/header.pug
+
+if msg
+    .alert.alert-dismissible.fade.show.alert-success
+        strong #{msg}
+        button.close(type='button' data-dismiss='alert')
+            span(aria-hidden='true') &times;
+
+.container
+    .row 
+        .offset-3.mx-auto.col-md-6.m-5
+            .con.border.border-primary 
+                .bg-primary.p-2.text-center.text-white.font-weight-bold Update Profile
+                .form-container.p-4
+                    form(method="post" action="../../api/users/editprofile")
+                        .form-group
+                            label Name
+                            input#email.form-control(type='text' name="name" placeholder='Enter Name' minlength="3" value=name required="true")
+                            small#msg.form-text.text-muted 
+                        input.btn.btn-primary(type='submit' value="Update Profile")   
+                        
+include layout/footer.pug

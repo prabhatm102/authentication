@@ -1,7 +1,6 @@
 const { User } = require("../model/user")
 const nodemailer = require("nodemailer");
 const config = require("config");
-const moment = require("moment");
 
 const sendmail = async(req,res,next)=>{
    const user = await User.findOne({email:req.body.email});
@@ -10,9 +9,10 @@ const sendmail = async(req,res,next)=>{
       const token = user.genrateToken();
 
       const d= new Date();
-      d.setTime(d.getTime()+1000*60*60);
+      d.setTime(d.getTime()+1000*60*10);
      // console.log(d.toLocaleTimeString());
-       const expDate = d.toUTCString(); 
+      const expDate = d.toUTCString(); 
+       
        const link = req.get("origin")+"/changepassword"; 
 
       res.cookie("verify="+token+";expires="+expDate);
@@ -21,7 +21,7 @@ const sendmail = async(req,res,next)=>{
           service:"gmail",
           auth:{
               user:"dummyrudra@gmail.com",
-              pass:config.get("pass")
+              pass:config.get("mailPass")
           }
       });
       var mailOptions = {
@@ -35,9 +35,7 @@ const sendmail = async(req,res,next)=>{
               res.status(500).render("forgetpassword.pug",{msg:"Something Went wrong!Try again",isSent:"false"});
            else
               res.status(200).render("forgetpassword.pug",{isSent:"true"});
-        });
-    
-          
+        });          
     }
 
 module.exports = {
