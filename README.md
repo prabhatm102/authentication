@@ -1,4 +1,10 @@
 # authentication
+
+Admin Email and Password For Login-->
+        email:admin@gmail.com
+        password:1111111111111111    
+
+
   For Development--->
       
       1. First clone project or download zip(then extract)--->
@@ -14,13 +20,14 @@
              
      3. Run index.js by following command through terminal
              > node index.js
+         
   
   For Production--->           
   
-     1. connect to github and set repo
-     2. set config variables
+     1. Connect your Paas account to github and set repo
+     2. Set config variables
              > auth_jwtPrivateKey="yourSecretKey"
-             > auth_db="yourDbUrl"
+             > auth_db="Database Connection String"
              > auth_mailPass="123@#abc"                (to send mail)
           
               
