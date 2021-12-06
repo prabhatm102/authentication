@@ -22,6 +22,14 @@ const userSchema  = new mongoose.Schema({
         trim:true,
         minlength:8,
         maxlength:255
+    },
+    isAdmin:{
+        type:Boolean,
+        default:false
+    },
+    isActive:{
+        type:Boolean,
+        default:true
     }
 });
 
@@ -29,7 +37,8 @@ userSchema.methods.genrateToken = function(){
     const userInfo = {
         _id:this._id,
         name:this.name,
-        email:this.email
+        email:this.email,
+        isAdmin:this.isAdmin
     }
     return jwt.sign(userInfo,config.get("jwtPrivateKey"));
 }

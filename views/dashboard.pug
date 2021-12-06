@@ -7,10 +7,49 @@ if msg
 
 .container
     .row 
-        .col-md-12 
-            marquee(behavior="alternate")
-                h1 &lArr;Dashboard&rArr;
+        .col-md-12
+            .dashboard.border.p-4.mt-3
+
+                .users
+                    if users.length>0
+                        each user,sn in users
+                            if isAdmin
+                                - var disabled = false;
+                            else  
+                                - var disabled  = true;
+
+                            if id==user._id
+                                - disabled = false;     
+                            
+                            if isAdmin && user.isAdmin
+                                - disabled = true;
+                            div.d-inline-block.m-3.border.border-primary.rounded.p-3.bg-light
+                                div.badge.badge-danger  S.No. : 
+                                    span=sn+1
+                                div  Name :
+                                    span=user.name
+                                div Email :   
+                                    span=user.email
+                                div Password :  
+                                    span *****  
+                                div Status : 
+                                    if user.isActive
+                                        span.badge.badge-success Active 
+                                    else 
+                                        span.badge.badge-danger Deactive   
+                                div Admin : 
+                                    if user.isAdmin
+                                        span.badge.badge-success Yes 
+                                    else 
+                                        span.badge.badge-danger No                                            
+                                div 
+                                    form.d-inline-block(method="post" action="../../editprofile/"+user._id)
+                                        button.btn.btn-outline-success(type="submit" disabled=disabled) Edit                                              
+                                    form.d-inline-block.ml-4(method="post" action="../../api/users/deleteaccount/"+user._id onsubmit="return isSure();")
+                                        button.btn.btn-outline-danger(type="submit" disabled=disabled ) Delete
+
 
 include layout/footer.pug
 script 
     include js/isSure.js
+

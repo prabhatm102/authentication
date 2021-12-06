@@ -5,6 +5,8 @@ if msg
         button.close(type='button' data-dismiss='alert')
             span(aria-hidden='true') &times;
 
-.container.d-inline-block.w-100.h-50.text-danger.font-weight-bold(style="font-size:48px;margin-auto")
-    marquee.text-bold.text-center( behavior="alternate" direction="right") Sign In To Go To Dashboard
+.container.h-50.text-danger.font-weight-bold(style="font-size:48px;margin-auto")
+    .row 
+        .mx-auto.col-md-12.m-5    
+            .text-bold.text-center.m-5( behavior="alternate" direction="right") Sign In To Go To Dashboard
 include layout/footer.pug                        

@@ -1,4 +1,5 @@
 include layout/header.pug
+
 if msg
     .alert.alert-dismissible.fade.show.alert-success
         strong #{msg}
@@ -7,19 +8,22 @@ if msg
 .container
     .row 
         .offset-3.mx-auto.col-md-6.m-5
-            .con.border.border-primary 
+            .con.border.border-primary(style="box-shadow:1px 1px 7px 1px black;") 
                 .bg-primary.p-2.text-center.text-white.font-weight-bold Sign In
                 .form-container.p-4
                     form(method="post" action="../../api/logins")
                         .form-group
-                            label(for='exampleInputEmail1') Email address
+                            label Email address
                             input#email.form-control(type='email' placeholder='Enter email' name="email" required="true")
                             small#email.form-text.text-muted We&apos;ll never share your email with anyone else.
                         .form-group
-                            label(for='exampleInputPassword1') Password
+                            label Password
                             input#password.form-control(type='password' placeholder='Password' name="password" required="true" minlength="8" maxlength="16")
-                        button.btn.btn-primary(type='submit') SignIn
-                        button.btn.btn-danger.ml-4(type='reset') Reset
+                        .form-check 
+                            input#isAdmin.form-check-input(type="checkbox" name="isAdmin")
+                            label.form-check-label Login as Admin                      
+                        button.btn.btn-outline-primary(type='submit') SignIn
+                        button.btn.btn-outline-danger.ml-4(type='reset') Reset
                         a.ml-4(href="../../forgetpassword") Forget Password?
                         a.ml-4(href="../../signup") New User?Register
-include layout/footer.pug                        
+include layout/footer.pug

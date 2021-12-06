@@ -13,7 +13,7 @@ const { validateObjectId } = require("../middleware/validate");
 // router.get("/:id",[validateObjectId,auth,getUserById]);
 router.post("/",validate,addUser);
 router.post("/changepassword",changePass);
-router.post("/editprofile",editProfile);
+router.post("/editprofile/:id",validateObjectId,editProfile);
 router.post("/deleteaccount/:id",[validateObjectId,deleteAccount])
 router.post("/:id",[validateObjectId,logout]);
 

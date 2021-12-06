@@ -11,10 +11,12 @@ const favicon = require("serve-favicon");
 const users = require("../routes/user");
 const login = require("../routes/auth");
 const sendmail = require("../routes/sendmail");
+const { User } = require("../model/user");
 
 
 
 module.exports = function(app){
+    app.use(express.static("views/"));
     app.use(favicon("views/images/favicon.ico"));
     app.use(express.json());
     app.use(express.urlencoded({extended:true}));
@@ -43,11 +45,17 @@ module.exports = function(app){
     });
 
   // After Login  
-    app.get("/dashboard",auth,(req,res)=>{
-       res.render("dashboard.pug",{msg:"Welcome "+req.user.name,id:req.user._id});
+    app.get("/dashboard",auth,async(req,res)=>{
+          const users = await User.find({}).select("-__v");
+          res.render("dashboard.pug",{msg:"Welcome "+req.user.name,id:req.user._id,isAdmin:req.user.isAdmin,users:users});
+       
+       // console.log(users);
     });
-    app.get("/editprofile",auth,(req,res)=>{
-       res.render("editprofile.pug",{id:req.user._id,name:req.user.name});
+
+
+    app.post("/editprofile/:id",auth,async(req,res)=>{
+        const user = await User.findOne({_id:req.params.id});
+        res.render("editprofile.pug",{id:user._id,name:user.name,email:user.email,isActive:user.isActive,isAdmin:req.user.isAdmin});        
     });
   
   // Invalid request
