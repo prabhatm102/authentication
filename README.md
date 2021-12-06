@@ -12,7 +12,8 @@
              > export auth_db="mongodb://localhost/authdb"
              > export auth_mailPass="123@#abc"                (to send mail)
              
-     3. run index.js             
+     3. Run index.js by following command through terminal
+             > node index.js
   
   For Production--->           
   
