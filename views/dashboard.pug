@@ -1,9 +1,11 @@
 include layout/header.pug 
-if msg
-    .alert.alert-dismissible.fade.show.alert-success
-        strong #{msg}
-        button.close(type='button' data-dismiss='alert')
-            span(aria-hidden='true') &times;
+
+.alert.alert-dismissible.fade.show.alert-success
+    strong
+        span#status 
+        span#msg
+    button.close(type='button' data-dismiss='alert')
+        span(aria-hidden='true') &times;
 
 .container
     .row 
@@ -43,13 +45,11 @@ if msg
                                     else 
                                         span.badge.badge-danger No                                            
                                 div 
-                                    form.d-inline-block(method="post" action="../../editprofile/"+user._id)
-                                        button.btn.btn-outline-success(type="submit" disabled=disabled) Edit                                              
-                                    form.d-inline-block.ml-4(method="post" action="../../api/users/deleteaccount/"+user._id onsubmit="return isSure();")
-                                        button.btn.btn-outline-danger(type="submit" disabled=disabled ) Delete
+                                    button.btn.btn-outline-success(type="button" onclick="edit(this);" id=user._id disabled=disabled) Edit                                              
+                                    button.btn.btn-outline-danger(type="button" onclick="deleteUser(this);" id=user._id disabled=disabled ) Delete
 
 
 include layout/footer.pug
 script 
-    include js/isSure.js
+    include js/dashboard.js
 

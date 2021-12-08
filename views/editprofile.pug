@@ -1,10 +1,12 @@
 include layout/header.pug
 
-if msg
-    .alert.alert-dismissible.fade.show.alert-success
-        strong #{msg}
-        button.close(type='button' data-dismiss='alert')
-            span(aria-hidden='true') &times;
+.alert.alert-dismissible.fade.show.alert-success
+    strong
+        span#status 
+        span#msg
+    button.close(type='button' data-dismiss='alert')
+        span(aria-hidden='true') &times;
+
 
 .container
     .row 
@@ -12,7 +14,7 @@ if msg
             .con.border.border-primary(style="box-shadow:1px 1px 7px 1px black;") 
                 .bg-primary.p-2.text-center.text-white.font-weight-bold Update Profile
                 .form-container.p-4
-                    form(method="post" action="../../api/users/editprofile/"+id)
+                    form(method="post" action="../../api/users/editprofile/"+id  name="frm" id="frm")
                         .form-group
                             label Name
                             input#name.form-control(type='text' name="name" placeholder='Enter Name' minlength="3" value=name required="true")
@@ -24,9 +26,11 @@ if msg
                             label Password
                             input#password.form-control(type='password' name="password" minlength="8" maxlength="16" required="true")        
                         .form-check 
-                            input#isAdmin.form-check-input(type="checkbox" name="isActive" checked=isActive)
+                            input#isActive.form-check-input(type="checkbox" name="isActive" checked=isActive)
                             label.form-check-label isActive                      
-                        input.btn.btn-outline-primary(type='submit' value="Update Profile")  
+                        input#submit.btn.btn-outline-primary(type='button' value="Update Profile")  
                              
                         
 include layout/footer.pug
+script 
+    include js/dashboard.js

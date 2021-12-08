@@ -1,9 +1,11 @@
 include layout/header.pug
-if msg
-    .alert.alert-dismissible.fade.show.alert-success
-        strong #{msg}
-        button.close(type='button' data-dismiss='alert')
-            span(aria-hidden='true') &times;
+
+.alert.alert-dismissible.fade.show.alert-success
+    strong
+        span#status 
+        span#msg
+    button.close(type='button' data-dismiss='alert')
+        span(aria-hidden='true') &times;
 
 .container
     .row 
@@ -11,7 +13,7 @@ if msg
             .con.border.border-primary(style="box-shadow:1px 1px 7px 1px black;") 
                 .bg-primary.p-2.text-center.text-white.font-weight-bold Sign Up
                 .form-container.p-4
-                    form(method="post" action="../api/users")
+                    form(method="post" action="../api/users" name="frm" id="frm")
                         .form-group
                             label Name
                             input#name.form-control(type='text' placeholder='Enter Name' name="name" required="true" minlength="3")       
@@ -22,8 +24,9 @@ if msg
                         .form-group
                             label Password
                             input#password.form-control(type='password' placeholder='Password' name="password" required="true" minlength="8" maxlength="16")
-                        button.btn.btn-outline-primary(type='submit') SignUp
+                        button#submit.btn.btn-outline-primary(type='button') SignUp
                         button.btn.btn-outline-danger.ml-4(type='reset') Reset
                         a.ml-4(href="../signin") Already Registered?Sign In
 include layout/footer.pug                        
-
+script 
+    include js/signup.js

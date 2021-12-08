@@ -10,7 +10,6 @@ const favicon = require("serve-favicon");
 
 const users = require("../routes/user");
 const login = require("../routes/auth");
-const sendmail = require("../routes/sendmail");
 const { User } = require("../model/user");
 
 
@@ -24,7 +23,6 @@ module.exports = function(app){
    // API
     app.use("/api/users",users);
     app.use("/api/logins",login);
-    app.use("/api/sendmail",sendmail);
 
   //Templates
   // Before Login  
@@ -40,7 +38,7 @@ module.exports = function(app){
     app.get("/forgetpassword",isLogin,(req,res)=>{
       res.render("forgetpassword.pug");   
     });
-    app.get("/changePassword",isLogin,isVerify,(req,res)=>{
+    app.get("/changePassword/:token",isLogin,isVerify,(req,res)=>{
       res.render("changepassword.pug");
     });
 
@@ -53,7 +51,7 @@ module.exports = function(app){
     });
 
 
-    app.post("/editprofile/:id",auth,async(req,res)=>{
+    app.get("/editprofile/:id",auth,async(req,res)=>{
         const user = await User.findOne({_id:req.params.id});
         res.render("editprofile.pug",{id:user._id,name:user.name,email:user.email,isActive:user.isActive,isAdmin:req.user.isAdmin});        
     });

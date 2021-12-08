@@ -2,7 +2,7 @@ html
 head
     title Authentication
     link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
-    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
+    script(src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous")
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')
 body(style="min-height=100%;") 
@@ -25,19 +25,7 @@ body(style="min-height=100%;")
                         a.nav-link(href='../../../signup') Sign Up
                     li.nav-item
                         a.nav-link(href='../../../signin') Sign In    
-                if id && !isAdmin        
-                    li.nav-item.dropdown
-                        a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown')
-                            | Your Account
-                        .dropdown-menu(style="background-color: #48C9B0;")
-                            form.d-inline-block(method="post" action="../../editprofile/"+id)
-                                button.btn.btn-outline-primary.dropdown-item(type='submit') Edit Profile                                              
-                            form(method="post" action="../../api/users/"+id)
-                                button.btn.btn-outline-primary.dropdown-item(type='submit') Logout
-                            .dropdown-divider     
-                            
-                            form(method="post" action="../../api/users/deleteaccount/"+id onsubmit="return isSure();")
-                                button.btn.bg-danger.dropdown-item.text-light(type='submit') Delete Account Permanently
-                if isAdmin 
-                    form(method="post" action="../../api/users/"+id)
-                        button.btn.btn-danger.btn-sm(type='submit') Logout
+                if id 
+                    li.nav-item.mt-2
+                        form(method="post" action="/api/logins/"+id name="logoutFrm" id="logoutFrm")
+                            button#logout.btn.btn-danger.btn-sm(type='button') Logout

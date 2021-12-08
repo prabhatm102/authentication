@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const config = require("config");
 module.exports = (req,res,next)=>{
-   const token = req.header('x-auth-token') || req.cookies.authToken;
+   const token = req.header('x-auth-token') || req.body.authToken || req.cookies.authToken;
     if(!token)
         return res.status(401).render("signin.pug",{msg:"Access Denied! No Token Provided"});
     try{
