@@ -12,10 +12,11 @@ const users = require("../routes/user");
 const login = require("../routes/auth");
 const { User } = require("../model/user");
 
-
+const path = require("path");
 
 module.exports = function(app){
     app.use(express.static("views/"));
+    app.use(express.static("public/"));
     app.use(favicon("views/images/favicon.ico"));
     app.use(express.json());
     app.use(express.urlencoded({extended:true}));
@@ -48,6 +49,10 @@ module.exports = function(app){
           res.render("dashboard.pug",{msg:"Welcome "+req.user.name,id:req.user._id,isAdmin:req.user.isAdmin,users:users});
        
        // console.log(users);
+    });
+    app.get("/public/uploads/:file",auth,async(req,res)=>{
+        res.download(path.join(__dirname,"../","public/uploads/")+req.params.file);
+      
     });
 
 

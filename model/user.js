@@ -30,6 +30,10 @@ const userSchema  = new mongoose.Schema({
     isActive:{
         type:Boolean,
         default:true
+    },
+    file:{
+        type:String,
+        required:true
     }
 });
 

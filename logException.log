@@ -27,3 +27,21 @@
 {"level":"error","message":"Cast to ObjectId failed for value \"61af4611a99a1a713e4c64\" (type string) at path \"_id\" for model \"users\""}
 {"level":"error","message":"ENOENT: no such file or directory, open '/home/rudra/Desktop/Authentication/views/js/sendMail.js'\n    at /home/rudra/Desktop/Authentication/views/forgetpassword.pug line 29"}
 {"level":"error","message":"ENOENT: no such file or directory, open '/home/rudra/Desktop/Authentication/views/js/isSent.js'\n    at /home/rudra/Desktop/Authentication/views/forgetpassword.pug line 28"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
+{"level":"error","message":"ENOENT: no such file or directory, unlink '/home/rudra/Desktop/Authentication/public/uploads/df4213bb20573d19d5fc9bb8187357a5'"}
+{"level":"error","message":"ENOENT: no such file or directory, unlink '/home/rudra/Desktop/Authentication/public/uploads/5ecc0c180076566bdc0a21986c7ebfaf'"}
+{"level":"error","message":"ENOENT: no such file or directory, unlink '/home/rudra/Desktop/Authentication/public/uploads/5ecc0c180076566bdc0a21986c7ebfaf'"}

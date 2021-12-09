@@ -7,9 +7,12 @@ const { validatePass } = require("../validation/validatePass");
 const { validateObjectId } = require("../middleware/validate");
 const auth = require("../middleware/auth");
 
+const multer = require("multer");
+const upload = multer({dest:'./public/uploads/'});
+
 
 // router.get("/:id",[validateObjectId,auth,getUserById]);
-router.post("/",validate,addUser);
+router.post("/",upload.single('file'),validate,addUser);
 router.post("/sendmail",validateEmail,sendMail);
 
 router.put("/changepassword/",[validatePass,auth,updatePass]);

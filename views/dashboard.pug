@@ -11,7 +11,6 @@ include layout/header.pug
     .row 
         .col-md-12
             .dashboard.border.p-4.mt-3
-
                 .users
                     if users.length>0
                         each user,sn in users
@@ -43,10 +42,12 @@ include layout/header.pug
                                     if user.isAdmin
                                         span.badge.badge-success Yes 
                                     else 
-                                        span.badge.badge-danger No                                            
-                                div 
+                                        span.badge.badge-danger No    
+                                div File : 
+                                    a.badge.badge-primary(href="../public/uploads/"+user.file) Download                                        
+                                div.mt-1 
                                     button.btn.btn-outline-success(type="button" onclick="edit(this);" id=user._id disabled=disabled) Edit                                              
-                                    button.btn.btn-outline-danger(type="button" onclick="deleteUser(this);" id=user._id disabled=disabled ) Delete
+                                    button.ml-3.btn.btn-outline-danger(type="button" onclick="deleteUser(this);" id=user._id disabled=disabled ) Delete
 
 
 include layout/footer.pug

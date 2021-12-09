@@ -3,18 +3,24 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
-
-const getUserById = async(req,res,next)=>{
-    const user = await User.findOne({name:req.user.name}).select("name email -_id");
-    res.status(200).send(user);
-}
+const fs = require("fs");
+const path = require('path');
+// const getUserById = async(req,res,next)=>{
+//     const user = await User.findOne({name:req.user.name}).select("name email -_id");
+//     res.status(200).send(user);
+// }
 
 const addUser = async(req,res,next)=>{
+  
     const email = await User.findOne({email:req.body.email});
-      if(email) return res.status(403).send("Email Already Exists!");
+      if(email) {
+         fs.unlinkSync(path.join(__dirname,'../public/uploads/')+req.file.filename);
+         return res.status(403).send("Email Already Exists!");
+      }
     const user =new User({
         name:req.body.name,
         email:req.body.email,
+        file:req.file.filename
     });
     const salt = await bcrypt.genSalt(10);
     const hashedPass = await bcrypt.hash(req.body.password,salt);
@@ -160,7 +166,7 @@ const sendMail = async(req,res,next)=>{
    }
 
 module.exports = {
-    getUserById:getUserById,
+   // getUserById:getUserById,
     addUser:addUser,
     updateUser:updateUser,
     updatePass:updatePass,

@@ -13,7 +13,7 @@ include layout/header.pug
             .con.border.border-primary(style="box-shadow:1px 1px 7px 1px black;") 
                 .bg-primary.p-2.text-center.text-white.font-weight-bold Sign Up
                 .form-container.p-4
-                    form(method="post" action="../api/users" name="frm" id="frm")
+                    form(method="post" action="../api/users" name="frm" id="frm" enctype="multipart/form-data")
                         .form-group
                             label Name
                             input#name.form-control(type='text' placeholder='Enter Name' name="name" required="true" minlength="3")       
@@ -24,6 +24,9 @@ include layout/header.pug
                         .form-group
                             label Password
                             input#password.form-control(type='password' placeholder='Password' name="password" required="true" minlength="8" maxlength="16")
+                        .form-group
+                            label Upload File
+                            input#file.form-control(type='file' name="file" required="true")
                         button#submit.btn.btn-outline-primary(type='button') SignUp
                         button.btn.btn-outline-danger.ml-4(type='reset') Reset
                         a.ml-4(href="../signin") Already Registered?Sign In
