@@ -22,7 +22,7 @@ Admin Email and Password For Login-->
              > node index.js
          
   
-  For Production--->           
+  For Production--->          trhrthrthrtth 
   
      1. Connect your Paas account to github and set repo
      2. Set config variables
