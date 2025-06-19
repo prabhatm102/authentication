@@ -28,6 +28,8 @@
 {"level":"error","message":"ENOENT: no such file or directory, open '/home/rudra/Desktop/Authentication/views/js/sendMail.js'\n    at /home/rudra/Desktop/Authentication/views/forgetpassword.pug line 29"}
 {"level":"error","message":"ENOENT: no such file or directory, open '/home/rudra/Desktop/Authentication/views/js/isSent.js'\n    at /home/rudra/Desktop/Authentication/views/forgetpassword.pug line 28"}
 {"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
+
+
 {"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
 {"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
 {"level":"error","message":"Cannot read properties of undefined (reading 'filename')"}
